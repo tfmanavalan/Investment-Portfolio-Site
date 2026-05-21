@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Journey - Interactive Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- Slide Navigation -->
+    <div class="slide-navigation">
+        <button class="nav-btn prev-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <div class="slide-counter">
+            <span id="currentSlide">1</span> / <span id="totalSlides">12</span>
+        </div>
+        <button class="nav-btn next-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Main Slideshow Container -->
+    <div class="slideshow-container">
+
+        <!-- Slide 1: Welcome -->
+        <div class="slide active" data-slide="1">
+            <div class="slide-content centered">
+                <div class="welcome-icon">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="80" fill="#3b82f6" opacity="0.2"/>
+                        <path d="M100 40 L140 80 L125 80 L125 120 L75 120 L75 80 L60 80 Z" fill="#10b981"/>
+                        <text x="100" y="155" text-anchor="middle" font-size="40" fill="#1e3a8a">$</text>
+                    </svg>
+                </div>
+                <h1 class="slide-title">Welcome to Your Investment Journey</h1>
+                <p class="slide-subtitle">A step-by-step guide to building wealth through smart investing</p>
+                <div class="journey-badges">
+                    <div class="badge"><i class="fas fa-graduation-cap"></i> Learn</div>
+                    <div class="badge"><i class="fas fa-calculator"></i> Calculate</div>
+                    <div class="badge"><i class="fas fa-chart-line"></i> Invest</div>
+                    <div class="badge"><i class="fas fa-trophy"></i> Grow</div>
+                </div>
+                <button class="cta-button" onclick="nextSlide()">
+                    Start Your Journey <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Slide 2: Why Invest? -->
+        <div class="slide" data-slide="2">
+            <div class="slide-content split-view">
+                <div class="content-left">
+                    <h2 class="slide-title">Why Should You Invest?</h2>
+                    <div class="info-cards">
+                        <div class="info-card pulse-card">
+                            <i class="fas fa-fire-alt"></i>
+                            <h3>Beat Inflation</h3>
+                            <p>Your money loses <strong>3% value</strong> yearly. Investing helps you stay ahead!</p>
+                        </div>
+                        <div class="info-card pulse-card delay-1">
+                            <i class="fas fa-seedling"></i>
+                            <h3>Compound Growth</h3>
+                            <p>Your returns earn returns. <strong>$10,000</strong> becomes <strong>$76,000</strong> in 30 years at 7%!</p>
+                        </div>
+                        <div class="info-card pulse-card delay-2">
+                            <i class="fas fa-umbrella-beach"></i>
+                            <h3>Financial Freedom</h3>
+                            <p>Build wealth for retirement, dreams, and peace of mind.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-right">
+                    <div class="infographic">
+                        <h3>$10,000 Over 30 Years</h3>
+                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Savings Account -->
+                            <rect x="50" y="200" width="80" height="50" fill="#ef4444" rx="5"/>
+                            <text x="90" y="230" text-anchor="middle" fill="white" font-size="14">Savings</text>
+                            <text x="90" y="270" text-anchor="middle" font-size="12">$13,000</text>
+
+                            <!-- Bonds -->
+                            <rect x="160" y="150" width="80" height="100" fill="#f59e0b" rx="5"/>
+                            <text x="200" y="190" text-anchor="middle" fill="white" font-size="14">Bonds</text>
+                            <text x="200" y="270" text-anchor="middle" font-size="12">$43,000</text>
+
+                            <!-- Stocks -->
+                            <rect x="270" y="50" width="80" height="200" fill="#10b981" rx="5"/>
+                            <text x="310" y="140" text-anchor="middle" fill="white" font-size="14">Stocks</text>
+                            <text x="310" y="270" text-anchor="middle" font-size="12">$76,000</text>
+
+                            <!-- Labels -->
+                            <text x="200" y="25" text-anchor="middle" font-size="16" fill="#1e3a8a" font-weight="bold">Growth Comparison</text>
+                        </svg>
+                        <p class="chart-note"><i class="fas fa-info-circle"></i> Historical averages, not guaranteed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Getting Started -->
+        <div class="slide" data-slide="3">
+            <div class="slide-content centered">
+                <h2 class="slide-title">Before You Invest: The Essentials</h2>
+                <div class="checklist-container">
+                    <div class="checklist-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="check1" class="styled-checkbox">
+                            <label for="check1">
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <h3>Emergency Fund</h3>
+                                    <p>Save 3-6 months of expenses in a savings account</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="check2" class="styled-checkbox">
+                            <label for="check2">
+                                <i class="fas fa-credit-card"></i>
+                                <div>
+                                    <h3>Pay Off High-Interest Debt</h3>
+                                    <p>Eliminate credit cards & loans above 7% interest</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="check3" class="styled-checkbox">
+                            <label for="check3">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h3>Long-Term Mindset</h3>
+                                    <p>Only invest money you won't need for 5+ years</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="check4" class="styled-checkbox">
+                            <label for="check4">
+                                <i class="fas fa-book-open"></i>
+                                <div>
+                                    <h3>Learn the Basics</h3>
+                                    <p>Understand stocks, bonds, and diversification (you're doing it now!)</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div id="readinessMessage" class="readiness-message"></div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Investment Types -->
+        <div class="slide" data-slide="4">
+            <div class="slide-content">
+                <h2 class="slide-title">Choose Your Investment Type</h2>
+                <p class="slide-subtitle">Click each to learn more</p>
+                <div class="investment-grid">
+                    <div class="investment-card" onclick="toggleCard(this)">
+                        <div class="card-front">
+                            <i class="fas fa-building"></i>
+                            <h3>Stocks</h3>
+                            <p>Own pieces of companies</p>
+                            <span class="flip-hint">Click to learn more</span>
+                        </div>
+                        <div class="card-back">
+                            <h3>Stocks</h3>
+                            <p><strong>Return:</strong> ~10% annually</p>
+                            <p><strong>Risk:</strong> High</p>
+                            <p><strong>Best for:</strong> Long-term growth</p>
+                            <p>Examples: AAPL, MSFT, GOOGL</p>
+                        </div>
+                    </div>
+                    <div class="investment-card" onclick="toggleCard(this)">
+                        <div class="card-front">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <h3>Bonds</h3>
+                            <p>Loan money for interest</p>
+                            <span class="flip-hint">Click to learn more</span>
+                        </div>
+                        <div class="card-back">
+                            <h3>Bonds</h3>
+                            <p><strong>Return:</strong> ~5% annually</p>
+                            <p><strong>Risk:</strong> Low-Medium</p>
+                            <p><strong>Best for:</strong> Stability & income</p>
+                            <p>Examples: Treasury, Corporate</p>
+                        </div>
+                    </div>
+                    <div class="investment-card" onclick="toggleCard(this)">
+                        <div class="card-front">
+                            <i class="fas fa-layer-group"></i>
+                            <h3>ETFs</h3>
+                            <p>Baskets of investments</p>
+                            <span class="flip-hint">Click to learn more</span>
+                        </div>
+                        <div class="card-back">
+                            <h3>ETFs</h3>
+                            <p><strong>Return:</strong> ~7-10% annually</p>
+                            <p><strong>Risk:</strong> Medium</p>
+                            <p><strong>Best for:</strong> Diversification</p>
+                            <p>Examples: SPY, VOO, VTI</p>
+                        </div>
+                    </div>
+                    <div class="investment-card" onclick="toggleCard(this)">
+                        <div class="card-front">
+                            <i class="fas fa-home"></i>
+                            <h3>REITs</h3>
+                            <p>Real estate investments</p>
+                            <span class="flip-hint">Click to learn more</span>
+                        </div>
+                        <div class="card-back">
+                            <h3>REITs</h3>
+                            <p><strong>Return:</strong> ~9-11% annually</p>
+                            <p><strong>Risk:</strong> Medium-High</p>
+                            <p><strong>Best for:</strong> Income & growth</p>
+                            <p>Examples: VNQ, O, AMT</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Diversification -->
+        <div class="slide" data-slide="5">
+            <div class="slide-content split-view">
+                <div class="content-left">
+                    <h2 class="slide-title">The Power of Diversification</h2>
+                    <div class="analogy-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <p><strong>Don't put all your eggs in one basket!</strong></p>
+                        <p>Spread your money across different investments to reduce risk.</p>
+                    </div>
+                    <div class="comparison-boxes">
+                        <div class="compare-box bad">
+                            <h4><i class="fas fa-times-circle"></i> Not Diversified</h4>
+                            <div class="mini-portfolio">
+                                <div class="portfolio-bar" style="width:100%; background:#ef4444;">
+                                    Tech 100%
+                                </div>
+                            </div>
+                            <p>If tech crashes, you lose everything</p>
+                        </div>
+                        <div class="compare-box good">
+                            <h4><i class="fas fa-check-circle"></i> Well Diversified</h4>
+                            <div class="mini-portfolio">
+                                <div class="portfolio-bar" style="width:30%; background:#3b82f6;">Tech 30%</div>
+                                <div class="portfolio-bar" style="width:20%; background:#10b981;">Healthcare 20%</div>
+                                <div class="portfolio-bar" style="width:20%; background:#f59e0b;">Finance 20%</div>
+                                <div class="portfolio-bar" style="width:15%; background:#8b5cf6;">Consumer 15%</div>
+                                <div class="portfolio-bar" style="width:15%; background:#ec4899;">Energy 15%</div>
+                            </div>
+                            <p>If one sector falls, others balance it out</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-right">
+                    <div class="interactive-pie">
+                        <h3>Build Your Portfolio</h3>
+                        <canvas id="diversificationPie" width="300" height="300"></canvas>
+                        <div class="pie-controls">
+                            <div class="slider-control">
+                                <label>Stocks <span id="stockPercent">60</span>%</label>
+                                <input type="range" id="stockSlider" min="0" max="100" value="60" class="pie-slider">
+                            </div>
+                            <div class="slider-control">
+                                <label>Bonds <span id="bondPercent">40</span>%</label>
+                                <input type="range" id="bondSlider" min="0" max="100" value="40" class="pie-slider">
+                            </div>
+                        </div>
+                        <p class="allocation-feedback" id="allocationFeedback"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Historic Returns -->
+        <div class="slide" data-slide="6">
+            <div class="slide-content">
+                <h2 class="slide-title">What History Teaches Us</h2>
+                <div class="timeline-container">
+                    <div class="stat-highlight">
+                        <div class="big-stat">10%</div>
+                        <p>Average S&P 500 return since 1926</p>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-event" data-year="1929">
+                            <div class="event-marker crash"></div>
+                            <div class="event-content">
+                                <h4>Great Depression</h4>
+                                <p>-83% decline, recovered in 25 years</p>
+                            </div>
+                        </div>
+                        <div class="timeline-event" data-year="1987">
+                            <div class="event-marker crash"></div>
+                            <div class="event-content">
+                                <h4>Black Monday</h4>
+                                <p>-34% decline, recovered in 2 years</p>
+                            </div>
+                        </div>
+                        <div class="timeline-event" data-year="2000">
+                            <div class="event-marker crash"></div>
+                            <div class="event-content">
+                                <h4>Dot-com Bubble</h4>
+                                <p>-49% decline, recovered in 7 years</p>
+                            </div>
+                        </div>
+                        <div class="timeline-event" data-year="2008">
+                            <div class="event-marker crash"></div>
+                            <div class="event-content">
+                                <h4>Financial Crisis</h4>
+                                <p>-57% decline, recovered in 5 years</p>
+                            </div>
+                        </div>
+                        <div class="timeline-event" data-year="2020">
+                            <div class="event-marker crash"></div>
+                            <div class="event-content">
+                                <h4>COVID-19</h4>
+                                <p>-34% decline, recovered in 6 months</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="key-lesson">
+                        <i class="fas fa-star"></i>
+                        <p><strong>The Lesson:</strong> Markets always recover. Time in the market beats timing the market!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Your Age Matters -->
+        <div class="slide" data-slide="7">
+            <div class="slide-content centered">
+                <h2 class="slide-title">Your Age & Investment Strategy</h2>
+                <div class="age-calculator">
+                    <label for="ageInput">Enter Your Age:</label>
+                    <input type="number" id="ageInput" min="18" max="100" value="30" class="age-input">
+                    <button onclick="calculateAgeAllocation()" class="calc-button">
+                        <i class="fas fa-calculator"></i> Calculate My Strategy
+                    </button>
+                </div>
+                <div id="ageResults" class="age-results">
+                    <div class="allocation-visual">
+                        <div class="allocation-bars">
+                            <div class="alloc-bar stocks">
+                                <div class="bar-fill" id="stockBar"></div>
+                                <span id="stockLabel">70%</span>
+                            </div>
+                            <div class="alloc-bar bonds">
+                                <div class="bar-fill" id="bondBar"></div>
+                                <span id="bondLabel">30%</span>
+                            </div>
+                        </div>
+                        <div class="legend">
+                            <div class="legend-item">
+                                <span class="legend-color stocks"></span> Stocks (Growth)
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color bonds"></span> Bonds (Stability)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="age-advice" id="ageAdvice">
+                        <i class="fas fa-info-circle"></i>
+                        <p>Enter your age to see your recommended allocation!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Investment Simulator -->
+        <div class="slide" data-slide="8">
+            <div class="slide-content">
+                <h2 class="slide-title">See Your Money Grow</h2>
+                <p class="slide-subtitle">Adjust the sliders to see your potential returns</p>
+                <div class="simulator-layout">
+                    <div class="simulator-controls">
+                        <div class="control-group">
+                            <label><i class="fas fa-dollar-sign"></i> Starting Amount</label>
+                            <div class="value-display">$<span id="initDisplay">10000</span></div>
+                            <input type="range" id="initialAmount" min="1000" max="100000" step="1000" value="10000" class="slider">
+                        </div>
+                        <div class="control-group">
+                            <label><i class="fas fa-calendar-alt"></i> Monthly Addition</label>
+                            <div class="value-display">$<span id="monthlyDisplay">500</span></div>
+                            <input type="range" id="monthlyAmount" min="0" max="5000" step="100" value="500" class="slider">
+                        </div>
+                        <div class="control-group">
+                            <label><i class="fas fa-hourglass-half"></i> Years</label>
+                            <div class="value-display"><span id="yearsDisplay">30</span> years</div>
+                            <input type="range" id="yearsAmount" min="1" max="50" step="1" value="30" class="slider">
+                        </div>
+                        <div class="control-group">
+                            <label><i class="fas fa-percentage"></i> Expected Return</label>
+                            <div class="value-display"><span id="returnDisplay">7</span>%</div>
+                            <input type="range" id="returnRate" min="0" max="15" step="0.5" value="7" class="slider">
+                        </div>
+                    </div>
+                    <div class="simulator-results">
+                        <div class="result-box big-result">
+                            <h3>Your Final Value</h3>
+                            <div class="result-amount" id="finalAmount">$0</div>
+                        </div>
+                        <div class="result-breakdown">
+                            <div class="breakdown-item">
+                                <span class="label">You Contributed:</span>
+                                <span class="value" id="contributedAmount">$0</span>
+                            </div>
+                            <div class="breakdown-item highlight">
+                                <span class="label">Investment Gains:</span>
+                                <span class="value" id="gainsAmount">$0</span>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <div class="chart-helper">
+                                <i class="fas fa-hand-pointer"></i>
+                                <span>Adjust sliders to see your investment grow over time</span>
+                            </div>
+                            <canvas id="growthChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Start Small -->
+        <div class="slide" data-slide="9">
+            <div class="slide-content centered">
+                <h2 class="slide-title">You Don't Need Much to Start!</h2>
+                <div class="start-amount-examples">
+                    <div class="example-card" onclick="selectStartAmount(this, 50)">
+                        <div class="amount">$50</div>
+                        <i class="fas fa-coffee"></i>
+                        <p>Skip 10 coffees per month</p>
+                        <div class="future-value">
+                            <small>In 30 years:</small>
+                            <strong>$61,000</strong>
+                        </div>
+                    </div>
+                    <div class="example-card" onclick="selectStartAmount(this, 200)">
+                        <div class="amount">$200</div>
+                        <i class="fas fa-utensils"></i>
+                        <p>Cook at home more</p>
+                        <div class="future-value">
+                            <small>In 30 years:</small>
+                            <strong>$244,000</strong>
+                        </div>
+                    </div>
+                    <div class="example-card" onclick="selectStartAmount(this, 500)">
+                        <div class="amount">$500</div>
+                        <i class="fas fa-piggy-bank"></i>
+                        <p>Standard savings goal</p>
+                        <div class="future-value">
+                            <small>In 30 years:</small>
+                            <strong>$611,000</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="motivational-message">
+                    <i class="fas fa-rocket"></i>
+                    <h3>The Best Time to Start Was Yesterday</h3>
+                    <p>The second best time is today!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Build Your Portfolio -->
+        <div class="slide" data-slide="10">
+            <div class="slide-content">
+                <h2 class="slide-title">Build Your First Portfolio</h2>
+                <p class="slide-subtitle">Try creating a simple, diversified portfolio</p>
+                <div class="portfolio-builder">
+                    <div class="builder-left">
+                        <h3>Select Investments</h3>
+                        <div class="investment-options">
+                            <button class="investment-option" onclick="addToPortfolio('S&P 500 ETF', 'etf')">
+                                <i class="fas fa-chart-line"></i>
+                                <span>S&P 500 ETF</span>
+                                <small>Tracks top 500 US companies</small>
+                            </button>
+                            <button class="investment-option" onclick="addToPortfolio('Total Bond Fund', 'bond')">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Total Bond Fund</span>
+                                <small>Diversified bonds for stability</small>
+                            </button>
+                            <button class="investment-option" onclick="addToPortfolio('International Stocks', 'stock')">
+                                <i class="fas fa-globe"></i>
+                                <span>International Stocks</span>
+                                <small>Non-US companies</small>
+                            </button>
+                            <button class="investment-option" onclick="addToPortfolio('REIT Index', 'reit')">
+                                <i class="fas fa-building"></i>
+                                <span>REIT Index</span>
+                                <small>Real estate exposure</small>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="builder-right">
+                        <h3>Your Portfolio</h3>
+                        <div id="portfolioList" class="portfolio-list">
+                            <p class="empty-state">Click investments to add them</p>
+                        </div>
+                        <div class="portfolio-score" id="portfolioScore"></div>
+                        <button class="reset-btn" onclick="resetPortfolio()">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Common Mistakes -->
+        <div class="slide" data-slide="11">
+            <div class="slide-content">
+                <h2 class="slide-title">Avoid These Common Mistakes</h2>
+                <div class="mistakes-grid">
+                    <div class="mistake-card">
+                        <div class="mistake-icon danger">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3>Panic Selling</h3>
+                        <p class="mistake-text">Selling when markets drop locks in losses</p>
+                        <div class="solution">
+                            <strong>Instead:</strong> Stay invested. Markets recover!
+                        </div>
+                    </div>
+                    <div class="mistake-card">
+                        <div class="mistake-icon danger">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Timing the Market</h3>
+                        <p class="mistake-text">Waiting for the "perfect" time to invest</p>
+                        <div class="solution">
+                            <strong>Instead:</strong> Invest regularly, regardless of market conditions
+                        </div>
+                    </div>
+                    <div class="mistake-card">
+                        <div class="mistake-icon danger">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h3>High Fees</h3>
+                        <p class="mistake-text">Paying 1-2% in fees can cost you hundreds of thousands</p>
+                        <div class="solution">
+                            <strong>Instead:</strong> Choose low-cost index funds (< 0.20% fees)
+                        </div>
+                    </div>
+                    <div class="mistake-card">
+                        <div class="mistake-icon danger">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <h3>Not Diversifying</h3>
+                        <p class="mistake-text">Putting all money in one stock or sector</p>
+                        <div class="solution">
+                            <strong>Instead:</strong> Spread across 15-30 holdings or use ETFs
+                        </div>
+                    </div>
+                    <div class="mistake-card">
+                        <div class="mistake-icon danger">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Emotional Investing</h3>
+                        <p class="mistake-text">Following hype, FOMO, or fear</p>
+                        <div class="solution">
+                            <strong>Instead:</strong> Stick to your plan and strategy
+                        </div>
+                    </div>
+                    <div class="mistake-card">
+                        <div class="mistake-icon danger">
+                            <i class="fas fa-pause"></i>
+                        </div>
+                        <h3>Not Starting</h3>
+                        <p class="mistake-text">Waiting until you have "enough" money</p>
+                        <div class="solution">
+                            <strong>Instead:</strong> Start with whatever you can today!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Your Investment Plan -->
+        <div class="slide" data-slide="12">
+            <div class="slide-content centered">
+                <div id="actionPlanView">
+                    <h2 class="slide-title">Your Next Steps</h2>
+                    <div class="quick-action-steps">
+                        <div class="quick-step">
+                            <div class="step-icon"><i class="fas fa-bank"></i></div>
+                            <h3>1. Open a Brokerage Account</h3>
+                            <p>Fidelity, Vanguard, Schwab, or Robinhood</p>
+                        </div>
+                        <div class="quick-step">
+                            <div class="step-icon"><i class="fas fa-chart-line"></i></div>
+                            <h3>2. Start with Index Funds</h3>
+                            <p>VOO, VTI, or VTSAX (fees under 0.10%)</p>
+                        </div>
+                        <div class="quick-step">
+                            <div class="step-icon"><i class="fas fa-sync"></i></div>
+                            <h3>3. Automate Monthly Investments</h3>
+                            <p>Set it and forget it approach</p>
+                        </div>
+                    </div>
+                    <div class="final-cta">
+                        <h3>Ready to See Your Personalized Plan?</h3>
+                        <p>Calculate exactly how much you could grow based on your situation</p>
+                        <button class="cta-button" onclick="showPersonalCalculator()">
+                            <i class="fas fa-calculator"></i> Calculate My Returns
+                        </button>
+                        <button class="cta-button secondary" onclick="window.location.reload()">
+                            <i class="fas fa-redo"></i> Review Guide Again
+                        </button>
+                    </div>
+                    <div class="disclaimer">
+                        <small><i class="fas fa-info-circle"></i> Educational purposes only. Not financial advice. Consult a financial advisor before investing.</small>
+                    </div>
+                </div>
+
+                <div id="personalCalculatorView" style="display: none;">
+                    <h2 class="slide-title">Your Personal Investment Plan</h2>
+                    <div class="personal-calc-layout">
+                        <div class="calc-inputs-section">
+                            <h3>Your Situation</h3>
+                            <div class="personal-input-group">
+                                <label><i class="fas fa-birthday-cake"></i> Your Age</label>
+                                <input type="number" id="personalAge" value="30" min="18" max="80" class="personal-input">
+                            </div>
+                            <div class="personal-input-group">
+                                <label><i class="fas fa-wallet"></i> Starting Amount ($)</label>
+                                <input type="number" id="personalInitial" value="5000" min="0" step="1000" class="personal-input">
+                            </div>
+                            <div class="personal-input-group">
+                                <label><i class="fas fa-calendar-plus"></i> Monthly Investment ($)</label>
+                                <input type="number" id="personalMonthly" value="500" min="0" step="50" class="personal-input">
+                            </div>
+                            <div class="personal-input-group">
+                                <label><i class="fas fa-bullseye"></i> Target Age</label>
+                                <input type="number" id="personalTargetAge" value="65" min="30" max="100" class="personal-input">
+                            </div>
+                            <button class="calc-button" onclick="calculatePersonalPlan()">
+                                <i class="fas fa-magic"></i> Calculate My Plan
+                            </button>
+                        </div>
+                        <div class="calc-results-section">
+                            <div id="personalResults">
+                                <div class="result-placeholder">
+                                    <i class="fas fa-arrow-left"></i>
+                                    <p>Enter your details and click Calculate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="back-button" onclick="showActionPlan()">
+                        <i class="fas fa-arrow-left"></i> Back to Summary
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="slideshow.js"></script>
+</body>
+</html>
